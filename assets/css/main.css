@@ -2557,6 +2557,19 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
+		.work-item a {
+			display: block;
+			background: #f7f7f7;
+			border: solid 2px transparent;
+			padding: 1em;
+			border-radius: 0.35em;
+			transition: border-color 0.3s ease;
+		}
+
+		.work-item a:hover {
+			border-color: #2a2a2a;
+		}
+
 		.work-item .image {
 			margin: 0 0 1.5em 0;
 		}
