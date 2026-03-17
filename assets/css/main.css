@@ -3219,7 +3219,7 @@ input, select, textarea {
 			}
 
 				#header h1 br {
-					display: none;
+					display: inline;
 				}
 
 		/* Footer */
@@ -3242,6 +3242,11 @@ p {
 @media screen and (max-width: 736px) {
 	p {
 		text-align: left;
+	}
+
+	#two p {
+		font-size: 0.9em;
+		line-height: 1.8em;
 	}
 }
 
