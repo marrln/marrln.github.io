@@ -3230,3 +3230,23 @@ p {
 		text-align: left;
 	}
 }
+
+/* Dense Skills Section */
+
+#two ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	padding: 0;
+	margin: 0.5em 0;
+}
+
+#two li {
+	display: inline;
+	list-style: none;
+	padding: 0;
+}
+
+#two li:not(:last-child):after {
+	content: ", ";
+}
