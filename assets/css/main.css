@@ -2599,6 +2599,42 @@ input, select, textarea {
 			margin: 0;
 		}
 
+/* Publication Item */
+
+	.pub-item {
+		margin: 0 0 2em 0;
+	}
+
+		.pub-item .pub-content {
+			display: block;
+			background: #f7f7f7;
+			border: solid 3px #efefef;
+			padding: 1em;
+			border-radius: 0.35em;
+			color: inherit;
+		}
+
+		.pub-item .pub-content:hover {
+			border-color: #2a2a2a;
+			background: #f7f7f7;
+		}
+
+		.pub-item .pub-content:hover h3,
+		.pub-item .pub-content:hover p {
+			color: #2a2a2a;
+		}
+
+		.pub-item h3 {
+			font-size: 1em;
+			margin: 0 0 0.5em 0;
+		}
+
+		.pub-item p {
+			font-size: 0.8em;
+			line-height: 1.5em;
+			margin: 0;
+		}
+
 /* Header */
 
 	#header {
