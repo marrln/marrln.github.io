@@ -2571,9 +2571,13 @@ input, select, textarea {
 		}
 
 		.work-item a:hover {
-			color: inherit;
-			border-color: #efefef;
+			border-color: #2a2a2a;
 			background: #f7f7f7;
+		}
+
+		.work-item a:hover h3,
+		.work-item a:hover p {
+			color: #2a2a2a;
 		}
 
 		.work-item a:hover .image.thumb:before,
