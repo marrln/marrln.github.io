@@ -2563,11 +2563,12 @@ input, select, textarea {
 			border: solid 2px transparent;
 			padding: 1em;
 			border-radius: 0.35em;
-			transition: border-color 0.3s ease;
+			color: inherit;
 		}
 
 		.work-item a:hover {
-			border-color: #2a2a2a;
+			color: inherit;
+			border-bottom-color: transparent;
 		}
 
 		.work-item .image {
