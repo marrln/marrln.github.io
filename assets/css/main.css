@@ -3219,3 +3219,14 @@ input, select, textarea {
 			}
 
 	}
+/* Justified Text */
+
+p {
+	text-align: justify;
+}
+
+@media screen and (max-width: 736px) {
+	p {
+		text-align: left;
+	}
+}
