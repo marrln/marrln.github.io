@@ -2560,15 +2560,25 @@ input, select, textarea {
 		.work-item a {
 			display: block;
 			background: #f7f7f7;
-			border: solid 2px transparent;
+			border: solid 3px #efefef;
 			padding: 1em;
 			border-radius: 0.35em;
 			color: inherit;
 		}
 
+		.work-item .image:before {
+			opacity: 0 !important;
+		}
+
 		.work-item a:hover {
 			color: inherit;
-			border-bottom-color: transparent;
+			border-color: #efefef;
+			background: #f7f7f7;
+		}
+
+		.work-item a:hover .image.thumb:before,
+		.work-item a:hover .image.thumb:after {
+			opacity: 0;
 		}
 
 		.work-item .image {
