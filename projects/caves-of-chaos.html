@@ -15,8 +15,8 @@
 					<img src="../images/caves-of-chaos/icon.jpg" alt="Caves of Chaos screenshot" />
 				</a>
 				<h1>
-					Java RPG with procedural caves,<br />
-					real-time combat, and Swing GUI.<br />
+					My first game! <br />
+					Feel free to play! <br />
 					<a href="../index.html">← Back to Portfolio</a>
 				</h1>
 			</div>
@@ -62,37 +62,13 @@
 
 						<h3>Overview</h3>
 						<p>
-							Caves of Chaos is a Java roguelike RPG where you choose a class, 
-							explore procedurally generated cave floors, fight enemies, 
-							collect loot, and descend toward a final boss encounter. 
-							The objective is to survive the labyrinth and defeat the Medusa of Chaos.
-						</p>
-
-						<h3>Gameplay Details</h3>
-						<p>
-							<strong>Class Choice:</strong> 
-							Start as either a <strong>Wizard</strong> (ranged spellcaster) 
-							or a <strong>Duelist</strong> (melee fighter with balanced combat abilities).
-						</p>
-						<p>
-							<strong>Procedural Caves:</strong> 
-							Each level is generated with cellular automata, 
-							creating a fresh cave layout in every run and improving replayability.
-						</p>
-						<p>
-							<strong>Boss Progression:</strong> 
-							The Medusa of Chaos keeps persistent health 
-							across transitions, so each encounter contributes to the final victory.
-						</p>
-
-						<h3>Main Entry Point</h3>
-						<p>
-							The game starts in <strong>src/CavesOfChaos.java</strong>. 
-							It loads XML configuration and assets, 
-							parses class/name arguments, initializes 
-							the player and GameState, 
-							builds the Swing interface, 
-							and handles cleanup on exit.
+							Caves of Chaos is a Java roguelike RPG where you 
+							explore a dark cave and fight increasingly difficult enemies, 
+							collect loot, avoid traps and prepare for the final boss encounter. 
+							The objective is to survive the caves and defeat the Medusa of Chaos
+							in order to collect the Shard of Judgement.
+							You can play either as a Wizard or Duelist, each with unique items and strategies.
+							You need to manage your health, cooldowns, and inventory as you progress through the caves.
 						</p>
 
 						<h3>Core Features</h3>
@@ -104,6 +80,44 @@
 							<li>Persistent-health final boss level</li>
 							<li>Modular and extensible architecture</li>
 						</ul>
+
+						<h3>Gameplay Details</h3>
+						<p>
+							<strong>Class Choice:</strong> 
+							Start as either a <strong>Wizard</strong> (ranged spellcaster) 
+							or a <strong>Duelist</strong> (melee fighter with balanced combat abilities).
+							The spells are designed to be more powerful but have longer cooldowns and require
+							enough mana, while the duelist's abilities are more consistent and have shorter cooldowns.
+							Each attack is luck based, with damage calculated using a random factor to add unpredictability to combat.
+						</p>
+						<p>
+							<strong>Procedural Caves:</strong> 
+							Each level is generated with cellular automata, 
+							creating a fresh cave layout in every run and improving replayability.
+							The player can move between levels without problems, 
+							and the game state is preserved across transitions, 
+							allowing for strategic retreats and exploration.
+						</p>
+						<p>
+							<strong>Fog of War:</strong> 
+							Only tiles within the player's line of sight are visible, 
+							adding tension and encouraging cautious exploration.
+							Enemies can be hidden in the fog, so players must be prepared for surprise encounters.
+							Traps are indistinguisable from possible loot, adding an extra layer of danger to exploration.
+						</p>
+						<p>
+							<strong>Enemy AI:</strong> 
+							Enemies move randomly when the player is out of sight, 
+							but will actively pursue the player when detected, 
+							creating dynamic and engaging combat encounters.
+						</p>
+						<p>
+							<strong>Boss Progression:</strong> 
+							The Medusa of Chaos keeps persistent health 
+							across transitions, so each encounter contributes to the final victory.
+							The boss is designed to be a challenging endgame encounter that 
+							requires careful resource management and strategic use of abilities to defeat.
+						</p>
 
 						<!-- Skills as Buttons -->
 						<h3>Skills & Technologies</h3>
