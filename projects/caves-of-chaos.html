@@ -55,63 +55,102 @@
 									<a href="../images/caves-of-chaos/gameplay3.jpg" class="image fit thumb popup">
 										<img src="../images/caves-of-chaos/gameplay3.jpg" alt="Gameplay screenshot 3" />
 									<h3>Real-time Combat</h3>
-									<p>Fight slimes, goblins, werewolfs, and more</p>
+									<p>Fight slimes, goblins, werewolves, and more</p>
 								</a>
 							</article>
 						</div>
 
-						<!-- General Description (placeholders) -->
-						<h3>Cave Generation & Enemy AI</h3>
+						<h3>Overview</h3>
 						<p>
-							<strong>Cave Generation:</strong> The dungeon is built using a cellular automata algorithm to create organic, cave‑like layouts. Rooms and corridors are then connected with guarantee of full traversability via flood‑fill validation. Each level increases in size and difficulty.
+							Caves of Chaos is a Java roguelike RPG where you choose a class, 
+							explore procedurally generated cave floors, fight enemies, 
+							collect loot, and descend toward a final boss encounter. 
+							The objective is to survive the labyrinth and defeat the Medusa of Chaos.
+						</p>
+
+						<h3>Gameplay Details</h3>
+						<p>
+							<strong>Class Choice:</strong> 
+							Start as either a <strong>Wizard</strong> (ranged spellcaster) 
+							or a <strong>Duelist</strong> (melee fighter with balanced combat abilities).
 						</p>
 						<p>
-							<strong>Enemy AI:</strong> Monsters use A* pathfinding to navigate around walls and obstacles. Their behavior adapts based on the player's health and distance – ranged enemies will kite, while melee foes charge aggressively. Boss enemies have unique attack patterns.
+							<strong>Procedural Caves:</strong> 
+							Each level is generated with cellular automata, 
+							creating a fresh cave layout in every run and improving replayability.
 						</p>
+						<p>
+							<strong>Boss Progression:</strong> 
+							The Medusa of Chaos keeps persistent health 
+							across transitions, so each encounter contributes to the final victory.
+						</p>
+
+						<h3>Main Entry Point</h3>
+						<p>
+							The game starts in <strong>src/CavesOfChaos.java</strong>. 
+							It loads XML configuration and assets, 
+							parses class/name arguments, initializes 
+							the player and GameState, 
+							builds the Swing interface, 
+							and handles cleanup on exit.
+						</p>
+
+						<h3>Core Features</h3>
+						<ul>
+							<li>Procedurally generated cave levels for every run</li>
+							<li>Real-time combat with class-specific abilities and cooldowns</li>
+							<li>Item collection and inventory management</li>
+							<li>Class-specific weapons and abilities</li>
+							<li>Persistent-health final boss level</li>
+							<li>Modular and extensible architecture</li>
+						</ul>
 
 						<!-- Skills as Buttons -->
 						<h3>Skills & Technologies</h3>
 						<div class="row gtr-50 gtr-uniform">
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small primary fit">Java 22</a>
+								<a class="button small primary fit">Java 24+</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
 								<a class="button small fit">Swing GUI</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">A* Pathfinding</a>
+								<a class="button small fit">Cellular Automata</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Procedural Generation</a>
+								<a class="button small fit">Real-time Combat</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">MVC Architecture</a>
+								<a class="button small fit">OOP Design</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Design Patterns</a>
+								<a class="button small fit">XML Configuration</a>
 							</div>
 							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Data Structures</a>
+								<a class="button small fit">Java Swing UI</a>
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+								<a class="button small fit">Batch Automation</a>
 							</div>
 						</div>
 
-						<!-- How to Play (Download & Compile) -->
+						<!-- How to Play -->
 						<h3>How to Play</h3>
-						<p>
-							Clone the repository and compile the game. <strong>Requires Java 22+</strong>.
-						</p>
-						<pre><code>
-							git clone https://github.com/marrln/Caves-of-Chaos-JAVA-RPG-GAME.git
-							cd Caves-of-Chaos-JAVA-RPG-GAME
-							javac src/*.java
-							java src/
-						</code></pre>
-						<!-- <p>
-							Alternatively, download the <a href="https://github.com/marrln/Caves-of-Chaos-JAVA-RPG-GAME/releases">latest release JAR</a> and double‑click it.
-						</p> -->
-						<!-- <p>
-							<strong>Controls:</strong> Keyboard Controlled – WASD to move, Space to attack, I for inventory, P to pause. Explore the caves, defeat monsters, and find powerful loot!
-						</p> -->
+						<p><strong>Requirement:</strong> Java 24 or higher.</p>
+						<p><strong>Quick Play (Windows):</strong> compile and run with defaults (Wizard, Player1).</p>
+						<pre><code class="language-bash">run.bat</code></pre>
+						<p><strong>Quick Play with custom class/name:</strong></p>
+						<pre><code class="language-bash">run.bat wizard Gandalf
+run.bat duelist Conan</code></pre>
+						<p><strong>Build distributable JAR:</strong></p>
+						<pre><code class="language-bash">build-jar.bat
+java -jar dist/CavesOfChaos.jar wizard PlayerName</code></pre>
+						<p><strong>Example JAR runs:</strong></p>
+						<pre><code class="language-bash">java -jar dist/CavesOfChaos.jar wizard Gandalf
+java -jar dist/CavesOfChaos.jar duelist Conan</code></pre>
+						<ul class="actions">
+							<li><a href="https://github.com/marrln/Caves-of-Chaos-JAVA-RPG-GAME" class="button primary">View Project Repository</a></li>
+						</ul>
 					</div>
 				</div>
 			</section>
