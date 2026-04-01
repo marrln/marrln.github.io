@@ -123,48 +123,60 @@
 						<h3>Skills & Technologies</h3>
 						<p>
 							<div class="row gtr-50 gtr-uniform">
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Java 24+</a>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Java 24+</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Swing GUI</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Cellular Automata</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Real-time Combat</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">OOP Design</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">XML Configuration</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Java Swing UI</a>
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+									<a class="button small fit">Batch Automation</a>
+								</div>
 							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Swing GUI</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Cellular Automata</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Real-time Combat</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">OOP Design</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">XML Configuration</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Java Swing UI</a>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<a class="button small fit">Batch Automation</a>
-							</div>
-						</div>
 						</p>
 						
 						<!-- How to Play -->
 						<h3>How to Play</h3>
-						<p><strong>Requirement:</strong> Java 24 or higher.<br />
-						<strong>Quick Play (Windows):</strong> compile and run with defaults (Wizard, Player1).
-						<pre><code class="language-bash">run.bat</code></pre>
-						<strong>Quick Play with custom class/name:</strong>
-						<pre><code class="language-bash">run.bat wizard Gandalf
-run.bat duelist Conan</code></pre>
-						<strong>Build distributable JAR:</strong>
-						<pre><code class="language-bash">build-jar.bat
-java -jar dist/CavesOfChaos.jar wizard PlayerName</code></pre>
-						<strong>Example JAR runs:</strong>
-						<pre><code class="language-bash">java -jar dist/CavesOfChaos.jar wizard Gandalf
-java -jar dist/CavesOfChaos.jar duelist Conan</code></pre>
-						</p>
+						<div class="instruction-group">
+							<p><strong>Requirement:</strong> Java 24 or higher.</p>
+						</div>
+						<div class="instruction-group">
+							<p><strong>Quick Play (Windows):</strong> Compile and run with defaults (Wizard, Player1).</p>
+							<pre><code class="language-bash" data-trim>run.bat</code></pre>
+						</div>
+						<div class="instruction-group">
+							<p><strong>Quick Play with custom class/name:</strong></p>
+							<pre><code class="language-bash" data-trim>
+								run.bat wizard Gandalf
+								run.bat duelist Conan</code></pre>
+						</div>
+						<div class="instruction-group">
+							<p><strong>Build distributable JAR:</strong></p>
+							<pre><code class="language-bash" data-trim>
+								build-jar.bat
+								java -jar dist/CavesOfChaos.jar wizard PlayerName</code></pre>
+						</div>
+						<div class="instruction-group">
+							<p><strong>Example JAR runs:</strong></p>
+							<pre><code class="language-bash" data-trim>
+							java -jar dist/CavesOfChaos.jar wizard Gandalf
+							java -jar dist/CavesOfChaos.jar duelist Conan</code></pre>
+						</div>
 						<ul class="actions">
 							<li><a href="https://github.com/marrln/Caves-of-Chaos-JAVA-RPG-GAME" class="button">View Project Repository</a></li>
 						</ul>
@@ -194,6 +206,7 @@ java -jar dist/CavesOfChaos.jar duelist Conan</code></pre>
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/code-trim.js"></script>
 
 	</body>
 </html>
