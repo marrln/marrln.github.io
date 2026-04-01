@@ -231,7 +231,6 @@ input, select, textarea {
 
 		pre code.language-bash {
 			background: #1f2430;
-			border-left: solid 5px #49bf9d;
 			border-radius: 0.35em;
 			color: #f5f7ff;
 			text-shadow: none;
