@@ -1,0 +1,269 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ARM Multicycle Processor</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <h1>
+                    ARM Multicycle Processor<br />
+                    VHDL Multicycle ARM Subset<br /><br />
+                    <a href="../index.html">← Back to Portfolio</a>
+                </h1>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Project Details -->
+            <section id="project">
+                <div class="row">
+                    <div class="col-12">
+                        <header class="major">
+                            <h2>ARM Multicycle Processor</h2>
+                        </header>
+
+                        <h3>Overview</h3>
+                        <p>
+                            This repository contains a VHDL implementation of a multicycle processor that executes a subset of the ARM instruction set architecture.
+                            The design targets the Xilinx Zynq 7000 (xc7z020clg484-1) FPGA and was developed using the Vivado IDE.
+                        </p>
+                        <p>
+                            The processor executes each instruction over 3–5 clock cycles using a finite-state machine controller.
+                            It supports data processing, memory access, and branch instructions, with conditional execution based on status flags.
+                        </p>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/arm/proc_rtl.png" class="image fit thumb popup">
+                                    <img src="../images/arm/proc_rtl.png" alt="Processor RTL Diagram" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <h3>Features</h3>
+                        <ul>
+                            <li>Multicycle microarchitecture: fetch, decode/read, execute, memory access, and write-back stages.</li>
+                            <li>Data processing instructions: ADD, SUB, AND, OR, XOR, CMP, MOV, MVN, NOP.</li>
+                            <li>Shift operations: LSL, LSR, ASR, ROR.</li>
+                            <li>Memory access: LDR, STR.</li>
+                            <li>Branch instructions: B, BL.</li>
+                            <li>Conditional execution using the ARM cond field.</li>
+                            <li>Status register flags N, Z, C, V are updated only when required.</li>
+                            <li>Modular design with datapath, register file, ALU, decoder, conditional logic, and FSM.</li>
+                        </ul>
+
+                        <h4>Conditional Execution Table</h4>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Condition</th>
+                                        <th>Mnemonic</th>
+                                        <th>Description</th>
+                                        <th>Flags</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0000</td><td>EQ</td><td>Equal</td><td>$Z$</td></tr>
+                                    <tr><td>0001</td><td>NE</td><td>Not equal</td><td>$\overline{Z}$</td></tr>
+                                    <tr><td>0010</td><td>CS / HS</td><td>Carry set / unsigned higher or same</td><td>$C$</td></tr>
+                                    <tr><td>0011</td><td>CC / LO</td><td>Carry clear / unsigned lower</td><td>$\overline{C}$</td></tr>
+                                    <tr><td>0100</td><td>MI</td><td>Minus / negative</td><td>$N$</td></tr>
+                                    <tr><td>0101</td><td>PL</td><td>Plus / positive or zero</td><td>$\overline{N}$</td></tr>
+                                    <tr><td>0110</td><td>VS</td><td>Overflow / overflow set</td><td>$V$</td></tr>
+                                    <tr><td>0111</td><td>VC</td><td>No overflow / overflow clear</td><td>$\overline{V}$</td></tr>
+                                    <tr><td>1000</td><td>HI</td><td>Unsigned higher</td><td>$\overline{Z}\;C$</td></tr>
+                                    <tr><td>1001</td><td>LS</td><td>Unsigned lower or same</td><td>$Z + \overline{C}$</td></tr>
+                                    <tr><td>1010</td><td>GE</td><td>Signed greater or equal</td><td>$\overline{(N \oplus V)}$</td></tr>
+                                    <tr><td>1011</td><td>LT</td><td>Signed less</td><td>$N \oplus V$</td></tr>
+                                    <tr><td>1100</td><td>GT</td><td>Signed greater</td><td>$\overline{Z}\;\overline{(N \oplus V)}$</td></tr>
+                                    <tr><td>1101</td><td>LE</td><td>Signed less or equal</td><td>$Z + (N \oplus V)$</td></tr>
+                                    <tr><td>1110</td><td>AL / none</td><td>Always / unconditional</td><td>$1$</td></tr>
+                                    <tr><td>1111</td><td>none</td><td>For unconditional instructions</td><td>$1$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Architecture Overview</h3>
+                        <p>
+                            The processor has two main components: the datapath and the control unit.
+                            The datapath performs all data operations, while the control unit orchestrates execution through the FSM.
+                        </p>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/arm/datapath.png" class="image fit thumb popup">
+                                    <img src="../images/arm/datapath.png" alt="Datapath RTL Diagram" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <p>
+                            Key components include the program counter, instruction memory, instruction register, register file, ALU, extender, data memory, and multiplexers driven by the control unit.
+                        </p>
+
+                        <h3>Control Unit</h3>
+                        <p>
+                            The control unit includes the instruction decoder, conditional logic, and a finite-state machine that sequences through 14 states to generate control signals.
+                        </p>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/arm/control.png" class="image fit thumb popup">
+                                    <img src="../images/arm/control.png" alt="Control Unit Diagram" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <h4>Finite State Machine (FSM)</h4>
+                        <p>
+                            The processor FSM controls every instruction through a 3–5 cycle sequence using signals such as IRWrite, RegWrite, MAWrite, MemWrite, FlagsWrite, PCSrc, and PCWrite.
+                        </p>
+
+                        <p>
+                            Fetch, decode, execute, memory access, and write-back all occur under FSM control, with specific state sequences for branch, load, store, and conditional instructions.
+                        </p>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/arm/fsm.png" class="image fit thumb popup">
+                                    <img src="../images/arm/fsm.png" alt="FSM Diagram" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <h3>Implementation</h3>
+                        <ul>
+                            <li>Language: VHDL</li>
+                            <li>Tool: Xilinx Vivado IDE</li>
+                            <li>Target FPGA: Zynq 7000 ZC702 (xc7z020clg484-1)</li>
+                            <li>Maximum clock frequency: 117.6 MHz</li>
+                            <li>Resource usage: 805 LUTs, 251 FFs, 1 RAMB18E1, RAMS32/RAMD32, CARRY4 units</li>
+                            <li>Power: 0.189 W (56% static, 44% dynamic)</li>
+                        </ul>
+
+                        <h3>Verification</h3>
+                        <ul>
+                            <li>Register file testbench: checks writes/reads, R15 behaviour, RegWrite handling.</li>
+                            <li>ALU testbench: exercises ADD, SUB, AND, XOR, LSL, ASR, MOV, MVN and coverage of overflow/carry/flags.</li>
+                            <li>Control unit testbench: validates control signal generation for representative instructions.</li>
+                            <li>Processor testbench: runs a full ARM assembly program and compares register/memory state after each instruction.</li>
+                        </ul>
+
+                        <h3>Example Assembly Program</h3>
+                        <pre><code class="language-assembly" data-trim>; Initialize registers
+MOV R0, #5
+MOV R1, #3
+MOV R2, #0x0F0F0F0F
+MOV R3, #0xFF00FF00
+
+; Data processing
+ADD R4, R0, R1      ; R4 = 8
+SUB R5, R0, R1      ; R5 = 2
+AND R6, R2, R3      ; R6 = 0x0F000F00
+OR  R7, R2, R3      ; R7 = 0xFF0FFF0F
+XOR R8, R2, R3      ; R8 = 0xF00FF00F
+CMP R0, R1          ; sets flags (Z=0, C=1, N=0, V=0)
+MOV R9, #0x7FFFFFFF ; maximum positive
+ADD R10, R9, #1     ; overflow: R10 = 0x80000000, V=1
+
+; Shifts / rotates
+LSL R11, R0, #1     ; R11 = 10
+LSR R12, R11, #2    ; R12 = 2
+ASR R13, R10, #1    ; R13 = 0xC0000000 (N=1)
+ROR R14, R0, #1     ; R14 = 0x80000002 (rotate right by 1)
+
+; Memory access
+STR R4, [R0, #0]    ; store 8 at address 5
+LDR R5, [R0, #0]    ; load back to R5
+
+; Branch (unconditional)
+B   label
+MOV R6, #0          ; skipped
+label:
+ADD R7, R0, #1      ; executed after branch
+
+; Branch with link (subroutine call)
+BL  subroutine
+MOV R8, #0          ; return address → R14</code></pre>
+
+                        <h3>How to Use</h3>
+                        <ul>
+                            <li>Open the project in Xilinx Vivado.</li>
+                            <li>Simulate any testbench such as <em>tb_processor.vhd</em>.</li>
+                            <li>Synthesise the top-level entity <em>Processor</em>.</li>
+                            <li>Implement and generate the bitstream for the ZC702 board or a compatible Zynq device.</li>
+                            <li>Modify the ROM initialization to run a custom program.</li>
+                        </ul>
+
+                        <h3>Results Summary</h3>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Max clock frequency</td><td>117.647 MHz</td></tr>
+                                    <tr><td>Worst setup slack</td><td>0.000 ns (met)</td></tr>
+                                    <tr><td>Worst hold slack</td><td>0.249 ns (met)</td></tr>
+                                    <tr><td>LUTs</td><td>805</td></tr>
+                                    <tr><td>Flip‑flops</td><td>251</td></tr>
+                                    <tr><td>Power</td><td>0.189 W</td></tr>
+                                    <tr><td>Supported instructions</td><td>21 + condition variants</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="margin-top: 2em;"></div>
+                        <ul class="actions">
+                            <li><a href="#" class="button">View Project Repository</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://github.com/marrln" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="https://linkedin.com/in/patsimariln" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="mailto:mrlnpts@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; 2026 Maria Eleni Patsi</li><li>Design: <a href="http://html5up.net">HTML5 UP - Strata</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.poptrox.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/code-trim.js"></script>
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']]
+                }
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    </body>
+</html>
