@@ -2687,6 +2687,52 @@ input, select, textarea {
 			margin: 0;
 		}
 
+	.edu-item {
+		margin: 0 0 0.5em 0;
+	}
+
+	.edu-content {
+		display: block;
+		background: #f7f7f7;
+		border: solid 3px #efefef;
+		padding: 1.25em;
+		border-radius: 0.35em;
+		color: inherit;
+	}
+
+	.edu-content:hover {
+		border-color: #2a2a2a;
+	}
+
+	.edu-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 1em;
+		flex-wrap: wrap;
+		margin-bottom: 0.5em;
+	}
+
+	.edu-meta h3 {
+		font-size: 1em;
+		margin: 0;
+		flex: 1 1 auto;
+	}
+
+	.edu-grade {
+		flex: 0 0 auto;
+		font-weight: 700;
+		color: #585858;
+		white-space: nowrap;
+	}
+
+	.edu-content p {
+		font-size: 0.9em;
+		line-height: 1.6em;
+		margin: 0.5em 0 0 0;
+		color: #535353;
+	}
+
 /* Publication Item */
 
 	.pub-item {
