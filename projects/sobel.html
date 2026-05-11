@@ -1,0 +1,217 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Sobel Edge Detection SoC Accelerator</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <h1>
+                    Sobel Edge Detection SoC<br />
+                    Accelerator on Xilinx Zynq-7000<br /><br />
+                    <a href="../index.html">← Back to Portfolio</a>
+                </h1>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Project Details -->
+            <section id="project">
+                <div class="row">
+                    <div class="col-12">
+                        <header class="major">
+                            <h2>Sobel Edge Detection SoC Accelerator</h2>
+                        </header>
+
+                        <h3>Overview</h3>
+                        <p>
+                            This project presents the design, implementation, and evaluation of a complete System-on-Chip solution for accelerating the Sobel edge detection algorithm on the Xilinx Zynq-7000 AP SoC platform.
+                            The design leverages the combined Processing System (PS) and Programmable Logic (PL) architecture to deliver a large performance improvement compared to a software-only implementation.
+                        </p>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/sobel/sobel_example.png" class="image fit thumb popup">
+                                    <img src="../images/sobel/sobel_example.png" alt="Sobel edge detection example" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <h3>System Description</h3>
+                        <p>
+                            The full SoC integrates a software application running on the ARM Cortex-A9 cores with a custom VHDL-based Sobel accelerator in the FPGA fabric.
+                            The accelerator is connected through AXI interfaces and uses AXI DMA for efficient image transfers between DDR3 memory and programmable logic.
+                        </p>
+
+                        <h4>Software Implementation</h4>
+                        <p>
+                            A baseline Sobel edge detection version was first implemented in C and executed on the Zynq PS under PetaLinux.
+                            This software-only implementation provided the reference performance metrics for later comparison with the hardware-accelerated version.
+                        </p>
+
+                        <h4>Hardware Acceleration</h4>
+                        <p>
+                            A dedicated Sobel edge detector IP core was designed in VHDL for the PL.
+                            The accelerator includes AXI4-Lite for controls, AXI4-Stream for pixel data, and AXI DMA compatibility for fast memory transfers.
+                            The core is fully pipelined and optimized for high throughput, with a target processing rate up to 200 MSamples/sec at 200 MHz.
+                        </p>
+
+                        <h4>Processor Architecture</h4>
+                        <p>
+                            The accelerator is built from modular VHDL blocks including a pixel window producer, convolution kernel unit, and a Manhattan norm calculator.
+                            The pipeline streams 3×3 windows, applies Sobel kernels in hardware, and computes output magnitudes without using an expensive square root.
+                        </p>
+
+                        <h3>Key Design Modules</h3>
+                        <ul>
+                            <li><strong>Input Stream Scaler:</strong> prepares pixel data and keeps output identical to the software version by bypassing scaling.</li>
+                            <li><strong>Window Buffer:</strong> generates 3×3 pixel windows using internal line buffers for continuous streaming.</li>
+                            <li><strong>Kernel Convolution Unit:</strong> applies the Sobel Gx and Gy kernels in a pipelined fashion.</li>
+                            <li><strong>Manhattan Norm Calculator:</strong> computes |Gx| + |Gy| to avoid square root overhead while preserving edge quality.</li>
+                        </ul>
+
+                        <div class="row gtr-50 gtr-uniform">
+                            <article class="col-12 work-item">
+                                <a href="../images/sobel/sobel_proc_rtl.png" class="image fit thumb popup">
+                                    <img src="../images/sobel/sobel_proc_rtl.png" alt="Sobel processor RTL diagram" />
+                                </a>
+                            </article>
+                        </div>
+
+                        <h3>Evaluation and Results</h3>
+                        <p>
+                            The Sobel SoC was synthesized and implemented in Vivado targeting the ZedBoard platform.
+                            Performance was evaluated on 512×512 grayscale images and compared across software-only and hardware-accelerated modes.
+                        </p>
+
+                        <h4>FPGA Resource Utilization</h4>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Resource</th>
+                                        <th>Utilization</th>
+                                        <th>Available</th>
+                                        <th>Usage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>LUT</td>
+                                        <td>3576</td>
+                                        <td>53200</td>
+                                        <td>6.72%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LUTRAM</td>
+                                        <td>678</td>
+                                        <td>17400</td>
+                                        <td>3.90%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FF</td>
+                                        <td>5183</td>
+                                        <td>106400</td>
+                                        <td>4.87%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BRAM</td>
+                                        <td>6</td>
+                                        <td>140</td>
+                                        <td>4.29%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Timing and Power</h4>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>WNS</td>
+                                        <td>0.298 ns</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WHS</td>
+                                        <td>0.036 ns</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WPWS</td>
+                                        <td>1.520 ns</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total on-chip power</td>
+                                        <td>1.717 W</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dynamic power</td>
+                                        <td>1.574 W</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Static power</td>
+                                        <td>0.143 W</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Tools & Technologies</h3>
+                        <div class="row gtr-50 gtr-uniform">
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">Xilinx Zynq-7000</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">VHDL</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">C</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">PetaLinux</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">Vivado</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">AXI4-Lite</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">AXI4-Stream</a></div>
+                            <div class="col-3 col-6-medium col-12-small"><a class="button small fit">AXI DMA</a></div>
+                        </div>
+
+                        <div style="margin-top: 2em;"></div>
+                        <ul class="actions">
+                            <li><a href="#" class="button">View Project Repository</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://github.com/marrln" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="https://linkedin.com/in/patsimariln" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="mailto:mrlnpts@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; 2026 Maria Eleni Patsi</li><li>Design: <a href="http://html5up.net">HTML5 UP - Strata</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.poptrox.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/code-trim.js"></script>
+
+    </body>
+</html>
