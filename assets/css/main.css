@@ -2593,6 +2593,42 @@ input, select, textarea {
 			display: none;
 		}
 
+	.button.active,
+	.button.active:hover {
+		background-color: #2a2a2a;
+		border-color: #2a2a2a;
+		color: #ffffff !important;
+	}
+
+	.work-category-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+		margin-bottom: 2em;
+		padding-left: 0;
+	}
+
+	.work-category-buttons li {
+		margin: 0;
+	}
+
+	.work-item.placeholder .thumb.placeholder {
+		background-color: rgba(255,255,255,0.05);
+		border: 1px dashed #efefef;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		min-height: 180px;
+		position: relative;
+	}
+
+	.work-item.placeholder .placeholder-text {
+		color: #efefef;
+		font-size: 1rem;
+		padding: 1em;
+		text-align: center;
+	}
+
 		.work-item a:hover {
 			border-color: #2a2a2a;
 			background: #f7f7f7;

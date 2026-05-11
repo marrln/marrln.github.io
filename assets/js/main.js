@@ -114,4 +114,35 @@
 
 			});
 
+		// Recent Work category filter.
+		(function() {
+			var $buttons = $('#four .work-category-buttons a'),
+				$items = $('#four .work-item');
+
+			function filterCategory(category) {
+				$items.each(function() {
+					var $this = $(this);
+
+					if (category === 'featured') {
+						$this.toggle($this.hasClass('featured'));
+					} else {
+						$this.toggle($this.hasClass(category));
+					}
+				});
+			}
+
+			$buttons.on('click', function(event) {
+				event.preventDefault();
+				var $button = $(this),
+					category = $button.data('category');
+
+				$buttons.removeClass('active');
+				$button.addClass('active');
+				filterCategory(category);
+			});
+
+			// Start with featured view.
+			filterCategory('featured');
+		})();
+
 })(jQuery);
