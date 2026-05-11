@@ -121,12 +121,16 @@
 
 			function filterCategory(category) {
 				$items.each(function() {
-					var $this = $(this);
+					var $this = $(this),
+					show = category === 'featured' ? $this.hasClass('featured') : $this.hasClass(category);
 
-					if (category === 'featured') {
-						$this.toggle($this.hasClass('featured'));
+					if (show) {
+						$this.stop(true, true).hide().addClass('reveal').show(0);
+						$this.one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function() {
+							$(this).removeClass('reveal');
+						});
 					} else {
-						$this.toggle($this.hasClass(category));
+						$this.hide().removeClass('reveal');
 					}
 				});
 			}
